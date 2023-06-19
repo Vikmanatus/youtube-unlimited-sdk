@@ -30,7 +30,10 @@ public class YoutubePlayerManager extends SimpleViewManager<View> {
   public void setWidth(VideoPlayer view, int width) {
     view.setWidth(width);
   }
-
+  @ReactProp(name = "videoUri")
+  public void setWidth(VideoPlayer view, String videoUri) {
+    view.setVideoUri(videoUri);
+  }
   @ReactProp(name = "height")
   public void setHeight(VideoPlayer view, int height) {
     view.setHeight(height);

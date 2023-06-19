@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
+import com.facebook.react.uimanager.annotations.ReactPropGroup;
 
 public class YoutubePlayerManager extends SimpleViewManager<View> {
   public static final String REACT_CLASS = "YoutubePlayer";
@@ -25,9 +26,11 @@ public class YoutubePlayerManager extends SimpleViewManager<View> {
     return new View(reactContext);
   }
 
-  @ReactProp(name = "width")
-  public void setWidth(View view, Integer width) {
+  @ReactPropGroup(names = {"width", "height"})
+  public void setDimensions(View view, int width, int height) {
+    // Setting the background color
     view.setBackgroundColor(Color.parseColor("#fcba03"));
-    view.setLayoutParams(new ViewGroup.LayoutParams(width, 400));
+    // Setting width and height
+    view.setLayoutParams(new ViewGroup.LayoutParams(width, height));
   }
 }

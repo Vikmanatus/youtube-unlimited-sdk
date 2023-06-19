@@ -20,3 +20,14 @@ export const YoutubeUnlimitedSdkView =
     : () => {
         throw new Error(LINKING_ERROR);
       };
+
+type YoutubePlayerProps = {
+  width: number;
+  height: number;
+};
+export const YoutubePlayer =
+  UIManager.getViewManagerConfig('YoutubePlayer') !== null
+    ? requireNativeComponent<YoutubePlayerProps>('YoutubePlayer')
+    : () => {
+        throw new Error(LINKING_ERROR);
+      };

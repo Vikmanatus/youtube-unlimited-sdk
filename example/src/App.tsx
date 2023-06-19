@@ -1,12 +1,16 @@
 import * as React from 'react';
 
-import { StyleSheet, View } from 'react-native';
-import { YoutubeUnlimitedSdkView } from 'react-native-youtube-unlimited-sdk';
+import { Dimensions, StyleSheet, View } from 'react-native';
+import {
+  // YoutubeUnlimitedSdkView,
+  YoutubePlayer,
+} from 'react-native-youtube-unlimited-sdk';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <YoutubeUnlimitedSdkView color="#32a852" style={styles.box} />
+      {/* <YoutubeUnlimitedSdkView color="#32a852" style={styles.box} /> */}
+      <YoutubePlayer height={400} width={Dimensions.get('window').width} />
     </View>
   );
 }
@@ -14,12 +18,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
+    width: Dimensions.get('window').width,
+    height: 400,
   },
 });

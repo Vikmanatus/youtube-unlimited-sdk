@@ -17,6 +17,6 @@ public class YoutubeUnlimitedSdkPackage implements ReactPackage {
 
   @Override
   public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-    return Arrays.<ViewManager>asList(new YoutubeUnlimitedSdkViewManager());
+    return Arrays.<ViewManager>asList(new YoutubeUnlimitedSdkViewManager(), new YoutubePlayerManager());
   }
 }

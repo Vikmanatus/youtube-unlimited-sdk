@@ -24,7 +24,6 @@ export const YoutubeUnlimitedSdkView =
 type YoutubePlayerProps = {
   width: number;
   height: number;
-  videoUri: string;
 };
 export const YoutubePlayer =
   UIManager.getViewManagerConfig('YoutubePlayer') !== null

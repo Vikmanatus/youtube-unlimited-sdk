@@ -10,7 +10,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       {/* <YoutubeUnlimitedSdkView color="#32a852" style={styles.box} /> */}
-      <YoutubePlayer height={400} width={Dimensions.get('window').width} />
+      <YoutubePlayer height={250} width={Dimensions.get('window').width} />
     </View>
   );
 }

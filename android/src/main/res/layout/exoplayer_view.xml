@@ -7,5 +7,5 @@
     android:id="@+id/expoplayer_view"
     android:layout_width="match_parent"
     app:resize_mode="fill"
-    android:layout_height="400dp"/>
+    android:layout_height="250dp"/>
 </LinearLayout>

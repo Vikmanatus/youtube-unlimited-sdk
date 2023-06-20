@@ -39,6 +39,7 @@ export const YoutubePlayer =
 const { VideoPlayerApiModule } = NativeModules;
 interface VideoPlayerApiInterface {
   hello: () => void;
+  initializePlayer: (videoUrl: string) => void;
 }
 
 export const VideoPlayer: VideoPlayerApiInterface = VideoPlayerApiModule;

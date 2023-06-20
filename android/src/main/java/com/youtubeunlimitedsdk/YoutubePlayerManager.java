@@ -33,10 +33,9 @@ public class YoutubePlayerManager extends SimpleViewManager<View> {
     DisplayMetrics displayMetrics = new DisplayMetrics();
     reactContext.getCurrentActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
     int deviceWidth = displayMetrics.widthPixels;
-
     // Set width to device width and height to 250px
-    FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(deviceWidth, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 250, reactContext.getResources().getDisplayMetrics()));
-    videoPlayer.setLayoutParams(params);
+    //FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(deviceWidth, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 250, reactContext.getResources().getDisplayMetrics()));
+    videoPlayer.setLayoutParams(new FrameLayout.LayoutParams(250,250));
 
     return videoPlayer;
   }

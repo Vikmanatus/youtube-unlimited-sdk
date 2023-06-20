@@ -4,13 +4,19 @@ import { Dimensions, StyleSheet, View } from 'react-native';
 import {
   // YoutubeUnlimitedSdkView,
   YoutubePlayer,
+  VideoPlayer,
 } from 'react-native-youtube-unlimited-sdk';
 
 export default function App() {
+  React.useEffect(() => {
+    VideoPlayer.hello();
+  }, []);
   return (
     <View style={styles.container}>
       {/* <YoutubeUnlimitedSdkView color="#32a852" style={styles.box} /> */}
-      <YoutubePlayer height={250} width={Dimensions.get('window').width} />
+      <YoutubePlayer
+        style={{ width: Dimensions.get('window').width, height: 250 }}
+      />
     </View>
   );
 }

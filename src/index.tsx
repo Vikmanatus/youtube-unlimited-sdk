@@ -1,5 +1,10 @@
 import type { ViewStyle } from 'react-native';
-import { requireNativeComponent, UIManager, Platform } from 'react-native';
+import {
+  requireNativeComponent,
+  UIManager,
+  Platform,
+  NativeModules,
+} from 'react-native';
 
 const LINKING_ERROR =
   `The package 'react-native-youtube-unlimited-sdk' doesn't seem to be linked. Make sure: \n\n` +
@@ -22,8 +27,7 @@ export const YoutubeUnlimitedSdkView =
       };
 
 type YoutubePlayerProps = {
-  width: number;
-  height: number;
+  style: ViewStyle;
 };
 export const YoutubePlayer =
   UIManager.getViewManagerConfig('YoutubePlayer') !== null
@@ -31,3 +35,10 @@ export const YoutubePlayer =
     : () => {
         throw new Error(LINKING_ERROR);
       };
+
+const { VideoPlayerApiModule } = NativeModules;
+interface VideoPlayerApiInterface {
+  hello: () => void;
+}
+
+export const VideoPlayer: VideoPlayerApiInterface = VideoPlayerApiModule;

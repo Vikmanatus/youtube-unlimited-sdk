@@ -57,7 +57,7 @@ public class VideoPlayer extends FrameLayout {
           params.width = ViewGroup.LayoutParams.MATCH_PARENT;
           params.height = (int) ( 200 * context.getResources().getDisplayMetrics().density);
           playerView.setLayoutParams(params);
-
+          playerView.requestLayout();
           fullscreen = false;
         }else{
           player.setVideoScalingMode(C.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING);
@@ -77,6 +77,8 @@ public class VideoPlayer extends FrameLayout {
           params.width = ViewGroup.LayoutParams.MATCH_PARENT;
           params.height = ViewGroup.LayoutParams.MATCH_PARENT;
           playerView.setLayoutParams(params);
+
+          playerView.requestLayout();  // Force PlayerView to resize
 
           fullscreen = true;
         }

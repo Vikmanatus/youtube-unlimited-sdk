@@ -18,7 +18,11 @@ export default function App() {
     <View style={styles.container}>
       {/* <YoutubeUnlimitedSdkView color="#32a852" style={styles.box} /> */}
       <YoutubePlayer
-         style={{ width: Dimensions.get('window').width, height:  Dimensions.get('window').height }}
+        style={{
+          width: Dimensions.get('window').width,
+          height: 250,
+          backgroundColor: 'red',
+        }}
       />
     </View>
   );

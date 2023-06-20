@@ -1,6 +1,7 @@
 package com.youtubeunlimitedsdk.player;
 
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.util.DisplayMetrics;
@@ -8,7 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
+import androidx.core.content.ContextCompat;
 import androidx.media3.common.C;
 import androidx.media3.common.MediaItem;
 import androidx.media3.exoplayer.ExoPlayer;
@@ -20,6 +24,8 @@ import com.facebook.react.uimanager.annotations.ReactPropGroup;
 import com.youtubeunlimitedsdk.R;
 
 public class VideoPlayer extends FrameLayout {
+  boolean fullscreen = false;
+  ImageView fullscreenButton;
   private ExoPlayer player;
   public VideoPlayer(ThemedReactContext context){
     super(context);
@@ -27,6 +33,50 @@ public class VideoPlayer extends FrameLayout {
     View view = inflater.inflate(R.layout.exoplayer_view, this, true);
     // Find the PlayerView
     PlayerView playerView = view.findViewById(R.id.expoplayer_view);
+    fullscreenButton = playerView.findViewById(R.id.exo_fullscreen_icon);
+
+    fullscreenButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        if(fullscreen) {
+          fullscreenButton.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_fullscreen_open));
+
+          context.getCurrentActivity().getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+
+//          if(getSupportActionBar() != null){
+//            getSupportActionBar().show();
+//          }
+
+          context.getCurrentActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+          RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) playerView.getLayoutParams();
+          params.width = params.MATCH_PARENT;
+          params.height = (int) ( 200 * context.getCurrentActivity().getResources().getDisplayMetrics().density);
+          playerView.setLayoutParams(params);
+
+          fullscreen = false;
+        }else{
+          fullscreenButton.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_fullscreen_close));
+
+          context.getCurrentActivity().getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN
+            |View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+            |View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+
+//          if(getSupportActionBar() != null){
+//            getSupportActionBar().hide();
+//          }
+
+          context.getCurrentActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+          RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) playerView.getLayoutParams();
+          params.width = params.MATCH_PARENT;
+          params.height = params.MATCH_PARENT;
+          playerView.setLayoutParams(params);
+
+          fullscreen = true;
+        }
+      }
+    });
 //    PlayerView playerView = new PlayerView(context);
 //    playerView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 //    playerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FIT);

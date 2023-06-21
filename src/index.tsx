@@ -1,10 +1,6 @@
+import type { MutableRefObject } from 'react';
 import type { ViewStyle } from 'react-native';
-import {
-  requireNativeComponent,
-  UIManager,
-  Platform,
-  NativeModules,
-} from 'react-native';
+import { requireNativeComponent, Platform, UIManager } from 'react-native';
 
 const LINKING_ERROR =
   `The package 'react-native-youtube-unlimited-sdk' doesn't seem to be linked. Make sure: \n\n` +
@@ -26,20 +22,16 @@ export const YoutubeUnlimitedSdkView =
         throw new Error(LINKING_ERROR);
       };
 
-type YoutubePlayerProps = {
+export type YoutubePlayerProps = {
   style: ViewStyle;
+  ref: MutableRefObject<null>;
 };
-export const YoutubePlayer =
-  UIManager.getViewManagerConfig('YoutubePlayer') !== null
-    ? requireNativeComponent<YoutubePlayerProps>('YoutubePlayer')
+
+const PlayerComponentName = 'YoutubePlayer';
+
+export const YoutubeUnlimitedVideoPlayer =
+  UIManager.getViewManagerConfig(PlayerComponentName) != null
+    ? requireNativeComponent<YoutubePlayerProps>(PlayerComponentName)
     : () => {
         throw new Error(LINKING_ERROR);
       };
-
-const { VideoPlayerApiModule } = NativeModules;
-interface VideoPlayerApiInterface {
-  hello: () => void;
-  initializePlayer: (videoUrl: string) => void;
-}
-
-export const VideoPlayer: VideoPlayerApiInterface = VideoPlayerApiModule;

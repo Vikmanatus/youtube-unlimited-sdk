@@ -23,7 +23,7 @@ export const YoutubeUnlimitedSdkView =
       };
 
 export type YoutubePlayerProps = {
-  style: ViewStyle;
+  style?: ViewStyle;
   ref: MutableRefObject<null>;
 };
 

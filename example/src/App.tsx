@@ -46,14 +46,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       {/* <YoutubeUnlimitedSdkView color="#32a852" style={styles.box} /> */}
-      <YoutubeUnlimitedVideoPlayer
-        ref={ref}
-        style={{
-          height: PixelRatio.getPixelSizeForLayoutSize(200),
-          // converts dpi to px, provide desired width
-          width: PixelRatio.getPixelSizeForLayoutSize(200),
-        }}
-      />
+      <YoutubeUnlimitedVideoPlayer ref={ref} />
     </View>
   );
 }

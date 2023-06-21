@@ -19,5 +19,7 @@ public class VideoPlayerView extends FrameLayout {
     TextView text = new TextView(context);
     text.setText("Welcome to Android Fragments with React Native.");
     this.addView(text);
+
+
   }
 }

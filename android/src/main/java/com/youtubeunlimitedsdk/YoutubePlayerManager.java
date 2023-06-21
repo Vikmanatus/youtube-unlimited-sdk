@@ -95,11 +95,11 @@ public class YoutubePlayerManager extends ViewGroupManager<FrameLayout> {
     ViewGroup parentView = (ViewGroup) root.findViewById(reactNativeViewId);
     setupLayout(parentView);
 
-    final VideoPlayerFragment myFragment = new VideoPlayerFragment();
+    final VideoPlayerFragment videoPlayerFragment = new VideoPlayerFragment();
     FragmentActivity activity = (FragmentActivity) reactContext.getCurrentActivity();
     activity.getSupportFragmentManager()
       .beginTransaction()
-      .replace(reactNativeViewId, myFragment, String.valueOf(reactNativeViewId))
+      .replace(reactNativeViewId, videoPlayerFragment, String.valueOf(reactNativeViewId))
       .commit();
   }
 
@@ -122,9 +122,9 @@ public class YoutubePlayerManager extends ViewGroupManager<FrameLayout> {
     int height = propHeight;
 
     view.measure(
-      View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY),
-      View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY));
+      View.MeasureSpec.makeMeasureSpec(500, View.MeasureSpec.EXACTLY),
+      View.MeasureSpec.makeMeasureSpec(700, View.MeasureSpec.EXACTLY));
 
-    view.layout(0, 0, width, height);
+    view.layout(0, 0, 500, 700);
   }
 }

@@ -1,5 +1,6 @@
 package com.youtubeunlimitedsdk;
 
+import android.graphics.Color;
 import android.util.DisplayMetrics;
 import android.view.Choreographer;
 import android.view.View;
@@ -129,7 +130,7 @@ public class YoutubePlayerManager extends ViewGroupManager<FrameLayout> {
     // propWidth and propHeight coming from react-native props
     int width = getScreenWidth();
     int height = convertDpToPixel(700, reactContext);
-
+    view.setBackgroundColor(Color.parseColor("#5FD3F3"));
     view.measure(
       View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY),
       View.MeasureSpec.makeMeasureSpec(800, View.MeasureSpec.EXACTLY));

@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.media3.common.MediaItem;
 import androidx.media3.exoplayer.ExoPlayer;
+import androidx.media3.ui.AspectRatioFrameLayout;
 import androidx.media3.ui.PlayerView;
 
 public class VideoPlayerView extends FrameLayout {
@@ -17,9 +18,11 @@ public class VideoPlayerView extends FrameLayout {
 
   public VideoPlayerView(@NonNull Context context) {
     super(context);
-    // this.setBackgroundColor(Color.parseColor("#5FD3F3"));
+    //this.setBackgroundColor(Color.parseColor("#5FD3F3"));
     player = new ExoPlayer.Builder(context).build();
     playerView = new PlayerView(context);
+    playerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FILL);
+
     playerView.setPlayer(player);
     playerView.setUseController(true); // set to true or false to control visibility of the controller
     FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);

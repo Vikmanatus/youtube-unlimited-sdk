@@ -1,8 +1,10 @@
 package com.youtubeunlimitedsdk;
 
+import android.util.DisplayMetrics;
 import android.view.Choreographer;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
@@ -113,18 +115,29 @@ public class YoutubePlayerManager extends ViewGroupManager<FrameLayout> {
       }
     });
   }
+
+  private int getScreenWidth() {
+    WindowManager windowManager = (WindowManager) reactContext.getSystemService(reactContext.WINDOW_SERVICE);
+    DisplayMetrics displayMetrics = new DisplayMetrics();
+    windowManager.getDefaultDisplay().getMetrics(displayMetrics);
+    return displayMetrics.widthPixels;
+  }
   /**
    * Layout all children properly
    */
   public void manuallyLayoutChildren(View view) {
     // propWidth and propHeight coming from react-native props
-    int width = propWidth;
-    int height = propHeight;
+    int width = getScreenWidth();
+    int height = convertDpToPixel(700, reactContext);
 
     view.measure(
-      View.MeasureSpec.makeMeasureSpec(500, View.MeasureSpec.EXACTLY),
-      View.MeasureSpec.makeMeasureSpec(700, View.MeasureSpec.EXACTLY));
+      View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY),
+      View.MeasureSpec.makeMeasureSpec(800, View.MeasureSpec.EXACTLY));
 
-    view.layout(0, 0, 500, 700);
+    view.layout(0, 0, 500, 800);
+  }
+
+  public static int convertDpToPixel(float dp, ReactApplicationContext context){
+    return (int) dp * (context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT);
   }
 }

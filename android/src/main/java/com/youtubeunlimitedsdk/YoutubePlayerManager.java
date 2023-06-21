@@ -134,7 +134,7 @@ public class YoutubePlayerManager extends ViewGroupManager<FrameLayout> {
       View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY),
       View.MeasureSpec.makeMeasureSpec(800, View.MeasureSpec.EXACTLY));
 
-    view.layout(0, 0, 500, 800);
+    view.layout(0, 0, width, 800);
   }
 
   public static int convertDpToPixel(float dp, ReactApplicationContext context){
